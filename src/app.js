@@ -21,13 +21,24 @@ const PLAYERS = [
     "Slingo"
 ];
 
+var i=0;
 // initialize players with image and strength
 const initPlayers = (players) => {
+    var n=1;
+    var i=0;
     let detailedPlayers = '';
-
     // Instead of forloop use Map method
     // Code here
-
+    detailedPlayers=players.map(function(){
+       return {
+        name:players[i],
+        image:"images/super-"+(i+1)+".png",
+        strength : getRandomStrength(),
+        type: n%2==0?"hero":"villain"
+        };
+    });
+n++;
+i++;
     return detailedPlayers;
 }
 
@@ -43,6 +54,11 @@ const buildPlayers = (players, type) => {
     // Instead of using for loop
     // Use chaining of Array methods - filter, map and join
     // Type your code here
+    fragment=`<div class="player">
+    <img src="${players[i].image}" alt=" ">
+    <div class="name">${players[i].name}</div>
+    <div class="strength">${players[i].strength}</div>
+</div>`
 
     return fragment;
 }
